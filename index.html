@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Music player</title>
+        <script src="https://kit.fontawesome.com/a2d3361a92.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="./assets/style/main.css">
+    </head>
+    <body>
+        <div id="app">
+            <div id="header">
+                <div class="heading">
+                    <h4>Now playing</h4>
+                    <h2 class="name-music-playing">Sẽ về với nhau</h2>
+                </div>
+
+                <div id="cd">
+                    <div class="cd-thumb">
+
+                    </div>
+                </div>
+
+                <div id="control">
+                    <div class="btn btn-repeat">
+                        <i class="fa-solid fa-repeat"></i>
+                    </div>
+                    <div class="btn btn-prev">
+                        <i class="fa-solid fa-backward-step"></i>
+                    </div>
+                    <div class="btn btn-toggle-play pausing">
+                        <i class="fa-solid fa-pause"></i>
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+                    <div class="btn btn-next">
+                        <i class="fa-solid fa-forward-step"></i>
+                    </div>
+                    <div class="btn btn-random">
+                        <i class="fa-solid fa-shuffle"></i>
+                    </div>
+                </div>
+
+                <div id="play-time">
+                    <div class="current-time">00:01</div>
+                    <input class="progress" type="range" value="0" step="1" min="0" max="1000">
+                    <div class="total-time">00:00</div>
+                    <audio id="audio" src=""></audio>
+                </div>
+                
+
+            </div>
+
+            <div id="playlist">
+                <!-- <div class="song-item">
+                    <div class="item-thumb">
+                        <div class="thumb" style="background-image: url(./data/img/Cuop\ di\ ca\ the\ gioi.jpg);"></div>
+                    </div>
+                    <div class="item-body">
+                        <h3 class="song-name">Đám cưới nha</h3>
+                        <p class="song-author">Mie</p>
+                    </div>
+                    <div class="item-options">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div> -->
+                
+            </div>
+        </div>
+        <script src="./assets/script/main.js"></script>
+    </body>
+</html>
+
+
