@@ -59,8 +59,9 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background-image: url(./pngwing.com.png);
+    background-image: url(./BackgroundCD.png);
     background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .cd-thumb {
@@ -100,13 +101,15 @@ body {
 }
 
 .active-control {
-    color: #fff !important;
+    color: #8F2278 !important;
+    /* color: #fff !important; */
 }
 
 .btn-repeat,
 .btn-random {
     font-size: 18px;
-    color: rgba(78, 78, 78, 0.8);
+    color: rgba(143, 34, 120, 0.2);
+    /* color: rgba(78, 78, 78, 0.8); */
 }
 
 .fa-pause,
@@ -133,9 +136,7 @@ body {
     margin-left: 10px;
     height: 20px;
     text-align: center;
-    color: #f6f5f7;
-
-    /* background-color: #ccc; */
+    color: #5823a8;
 }
 
 .progress {
@@ -154,8 +155,8 @@ body {
     height: 20px;
     margin-right: 10px;
     text-align: center;
-    color: #f6f5f7;
-    /* background-color: #ccc; */
+    color: #ccc;
+    color: #5823a8;
 }
 
 /* Playlist */
@@ -179,6 +180,27 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+
+.hover-play {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* display: flex;  // Được thêm ở javascript*/
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.hover-play i {
+    color: #fff;
+    font-size: 18px !important;
 }
 
 .active-song {
@@ -234,19 +256,40 @@ body {
 /* Template *//* Equalizer */
 
 
-
-
-.song-item .equalizer-container {
+.song-item .sound-wave {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
     display: none;
 }
 
-.song-item.active-song .equalizer-container {
+.song-item.active-song .sound-wave {
+    display: block;
+}
+
+.equalizer-container {
     height: 10px;
     width: 20px;
-    margin: 0 10px 0 0;
     padding: 0 0 0 0;
-    position: relative;
+    position: absolute;
+    top: 17px;
+    left: 13px;
     display: flex;
+}
+
+
+.equalizer-column {
+    width: 15px;
+    float: left;
+    margin: 0 1px 0 0;
+    padding: 0;
+    height: 10px;
+    position: relative;
+    list-style-type: none;
 }
 
 .colour-bar {
@@ -255,17 +298,7 @@ body {
   right: 0;
   bottom: 0;
   height: 1px;
-  background: var(--color-volume);
-}
-
-.equalizer-column {
-  width: 10px;
-  float: left;
-  margin: 0 1px 0 0;
-  padding: 0;
-  height: 10px;
-  position: relative;
-  list-style-type: none;
+  background: #fff;
 }
 
 .equalizer-column:nth-child(1) .colour-bar {
@@ -295,47 +328,47 @@ body {
 @keyframes color-bar {
     0% {
         height: 1px;
-        background: var(--color-volume);
+        background: #fff;
     }
     10% {
         height: 3px;
-        background: var(--color-volume);
+        background: #fff;
     }
     20% {
         height: 5px;
-        background: var(--color-volume);
+        background: #fff;
     }
     30% {
         height: 2px;
-        background: var(--color-volume);
+        background: #fff;
     }
     40% {
         height: 7px;
-        background: var(--color-volume);
+        background: #fff;
     }
     50% {
         height: 9px;
-        background: var(--color-volume);
+        background: #fff;
     }
     60% {
         height: 3px;
-        background: var(--color-volume);
+        background: #fff;
     }
     70% {
         height: 8px;
-        background: var(--color-volume);
+        background: #fff;
     }
     80% {
         height: 5px;
-        background: var(--color-volume);
+        background: #fff;
     }
     90% {
         height: 3px;
-        background: var(--color-volume);
+        background: #fff;
     }
     100% {
         height: 1px;
-        background: var(--color-volume);
+        background: #fff;
     }
 }
 

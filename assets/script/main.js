@@ -116,22 +116,24 @@ const totalTime = $('.total-time');
 // console.log(playBtn);
 
 const effectWhenSongPlay = `
-    <div class="equalizer-container">
-        <ol class="equalizer-column">
-            <li class="colour-bar"></li>
-        </ol>
-        <ol class="equalizer-column">
-            <li class="colour-bar"></li>
-        </ol>
-        <ol class="equalizer-column">
-            <li class="colour-bar"></li>
-        </ol>
-        <ol class="equalizer-column">
-            <li class="colour-bar"></li>
-        </ol>
-        <ol class="equalizer-column">
-            <li class="colour-bar"></li>
-        </ol>
+    <div class="sound-wave">
+        <div class="equalizer-container">
+            <ol class="equalizer-column">
+                <li class="colour-bar"></li>
+            </ol>
+            <ol class="equalizer-column">
+                <li class="colour-bar"></li>
+            </ol>
+            <ol class="equalizer-column">
+                <li class="colour-bar"></li>
+            </ol>
+            <ol class="equalizer-column">
+                <li class="colour-bar"></li>
+            </ol>
+            <ol class="equalizer-column">
+                <li class="colour-bar"></li>
+            </ol>
+        </div>
     </div>
 `;
 
@@ -142,12 +144,17 @@ function start() {
     playSongsDefault();
     handleEvents();
     selectSong();
+    addClassHoverPlay();
 };
 
 function renderSongs() {
     let songsHTML = songsAPI.songs.map(element => {
         return `
             <div class="song-item">
+                <div class="hover-play">
+                    <i class="fa-solid fa-play"></i>
+                </div>
+                ${effectWhenSongPlay}
                 <div class="item-thumb">
                     <div class="thumb" style="background-image: url(${element.image});"></div>
                 </div>
@@ -155,7 +162,6 @@ function renderSongs() {
                     <h3 class="song-name">${element.name}</h3>
                     <p class="song-author">${element.author}</p>
                 </div>
-                ${effectWhenSongPlay}
                 <div class="item-options">
                     <i class="fa-solid fa-ellipsis-vertical"></i>
                 </div>
@@ -355,6 +361,7 @@ function selectSong() {
         }
         element.onclick = () => {
             $('.song-item.active-song').classList.remove('active-song');
+            songsList[index].querySelector('.hover-play').style = 'display: none';
             songsList[index].classList.add('active-song');
             songsAPI.currentSongIndex = index;
             playSongsDefault();
@@ -369,20 +376,20 @@ function scrollSongIntoView() {
         behavior: 'smooth',
         block: 'start'
     });
+};
 
-    // var myPromise = new Promise( function (resolve) {
-    //     playlist = $('#app');
-    //     $('.song-item.active-song').scrollIntoView({
-    //         behavior: 'smooth',
-    //         block: 'start'
-    //     });
-    //     setTimeout(function () {
-    //         resolve($('#playlist'));
-    //     }, 1500)
-    // })
-    
-    // myPromise
-    //     .then((e) => {
-    //         playlist = e
-    //     });
+function addClassHoverPlay() {
+    const songsList = $$('.song-item');
+    // songsList[index].querySelector('.hover-play').style = 'display: none';
+    // songsList[songsAPI.currentSongIndex].querySelector('.hover-play').style = 'display: block';
+    songsList.forEach((element, index) => {
+        element.onmousemove = () => {
+            if(index !== songsAPI.currentSongIndex)
+                songsList[index].querySelector('.hover-play').style = 'display: flex';
+        };
+        element.onmouseout = () => {
+            if(index !== songsAPI.currentSongIndex)
+                songsList[index].querySelector('.hover-play').style = 'display: none';
+        };
+    });
 };
